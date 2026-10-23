@@ -1,0 +1,164 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <img src="<%= imagens.hero %>" alt="Café em uma xícara vintage, livros, bolo e cogumelos em uma cafeteria encantada cor-de-rosa" class="hero-foto">
+
+    <div class="container hero-inner">
+      <div class="hero-texto">
+        <div class="eyebrow">✦ CAFETERIA &amp; LIVRARIA</div>
+
+        <h1>
+          <span>Wonderland</span>
+          <span>Coffee.</span>
+        </h1>
+
+        <p class="hero-frase">Aqui, o extraordinário é de casa.</p>
+        <p class="hero-descricao">
+          Siga o aroma do café, vire mais uma página e descubra um lugar
+          onde a vida tem um sabor de maravilha.
+        </p>
+
+        <div class="hero-botoes">
+          <button class="btn btn-primary abrir-cardapio">
+            Veja nosso cardápio
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </button>
+          <a href="#universo" class="link-sublinhado">
+            Entre no nosso universo ↓
+          </a>
+        </div>
+
+        <p class="hero-nota"><span class="coracao">♥</span> Feito para quem gosta de se perder em boas histórias.</p>
+      </div>
+
+      <span class="brilho">✧</span>
+
+      <div class="selo">
+        <span>UM CAFÉ</span>
+        <strong>fora do</strong>
+        <strong>comum</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAIXA QUE ANDA (marquee) ===== -->
+  <div class="faixa">
+    <div class="faixa-trilho">
+      <!-- Repetimos 2 vezes para a animação ficar contínua -->
+      <% for (let i = 0; i < 2; i++) { %>
+        <% faixa.forEach(function(item, n) { %>
+          <strong><%= item %></strong>
+          <span><%= n % 2 === 0 ? '✦' : '♥' %></span>
+        <% }) %>
+      <% } %>
+    </div>
+  </div>
+
+  <!-- ===== MARAVILHAS (cards) ===== -->
+  <section class="secao" id="maravilhas">
+    <div class="container">
+      <div class="secao-titulo">
+        <div>
+          <div class="eyebrow">SIGA SUA CURIOSIDADE</div>
+          <h2>Uma dose de <em>maravilha.</em></h2>
+        </div>
+        <p>
+          Para cada curiosidade, uma descoberta.<br>
+          Para cada pausa, um novo favorito.
+        </p>
+      </div>
+
+      <div class="cards">
+        <% cards.forEach(function(card) { %>
+          <article class="card revelar">
+            <div class="card-imagem">
+              <img src="<%= card.imagem %>" alt="<%= card.alt %>" loading="lazy">
+              <span class="etiqueta"><%= card.etiqueta %></span>
+            </div>
+            <div class="card-topo">
+              <h3><%= card.titulo %></h3>
+              <button class="botao-redondo" aria-label="Ver <%= card.titulo %>">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+              </button>
+            </div>
+            <p><%= card.texto %></p>
+          </article>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CITAÇÃO ===== -->
+  <section class="citacao">
+    <div class="container">
+      <span class="estrela">✦</span>
+      <blockquote>
+        “Às vezes, acredito em até seis coisas impossíveis antes do café da manhã.”
+      </blockquote>
+      <cite>LEWIS CARROLL · ALICE ATRAVÉS DO ESPELHO</cite>
+    </div>
+  </section>
+
+  <!-- ===== NOSSO UNIVERSO ===== -->
+  <section class="secao" id="universo">
+    <div class="container historia">
+      <div class="historia-foto revelar">
+        <img src="<%= imagens.hero %>" alt="O universo da Wonderland Coffee" loading="lazy">
+        <span class="adesivo">Fique. Só mais um capítulo. ♥</span>
+      </div>
+
+      <div class="historia-texto">
+        <div class="eyebrow vermelho">BEM-VINDO AO NOSSO UNIVERSO</div>
+        <h2>Um lugar para <em>não ter pressa.</em></h2>
+        <p>
+          A Wonderland Coffee nasce do encontro de duas paixões: o café que
+          aquece e as histórias que nos levam além.
+        </p>
+        <p>
+          Entre xícaras, páginas e um toque de País das Maravilhas, criamos um
+          refúgio para curiosos, sonhadores e apaixonados por pequenas
+          descobertas. Aqui, você pode ser um pouco Alice: deixar a
+          curiosidade guiar o caminho.
+        </p>
+
+        <button class="btn btn-contorno abrir-cardapio">
+          Encontre sua próxima história →
+        </button>
+
+        <div class="detalhes">
+          <span>☕ Café especial</span>
+          <span>📖 Boas histórias</span>
+          <span>♡ Feito com afeto</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== JANELA DO CARDÁPIO (modal) ===== -->
+<div class="modal-fundo" id="modal">
+  <div class="modal">
+    <button class="modal-fechar" id="fecharModal" aria-label="Fechar">×</button>
+    <div class="eyebrow vermelho">NOSSO CARDÁPIO</div>
+    <h2>Escolha sua <em>maravilha.</em></h2>
+
+    <ul class="lista-cardapio">
+      <% cardapio.forEach(function(item) { %>
+        <li>
+          <div>
+            <strong><%= item.nome %></strong>
+            <small><%= item.descricao %></small>
+          </div>
+          <span>R$ <%= item.preco.toFixed(2).replace('.', ',') %></span>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+
+<section class="container secao">
+  <h1 class="titulo-pagina">Cardápio</h1>
+  <p class="descricao-pagina">Escolha sua bebida ou doce favorito.</p>
+
+  <!-- Uma tabela para cada categoria -->
+  <% categorias.forEach(function(categoria) { %>
+    <h2><%= categoria %></h2>
+
+    <table class="tabela">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Descrição</th>
+          <th>Preço</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% itens.forEach(function(item) { %>
+          <% if (item.categoria === categoria) { %>
+            <tr>
+              <td><strong><%= item.nome %></strong></td>
+              <td><%= item.descricao %></td>
+              <td class="preco">R$ <%= item.preco.toFixed(2).replace('.', ',') %></td>
+            </tr>
+          <% } %>
+        <% }) %>
+      </tbody>
+    </table>
+  <% }) %>
+</section>
+
+<%- include('partials/footer') %>

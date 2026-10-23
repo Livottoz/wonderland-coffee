@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= titulo %></title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=Fraunces:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="cabecalho">
+  <div class="container cabecalho-conteudo">
+    <a href="/" class="logo">☕ Wonderland</a>
+
+    <button class="botao-menu" id="botaoMenu">☰</button>
+
+    <nav class="menu" id="menu">
+      <a href="/" class="<%= pagina === 'home' ? 'ativo' : '' %>">Início</a>
+      <a href="/cardapio" class="<%= pagina === 'cardapio' ? 'ativo' : '' %>">Cardápio</a>
+      <a href="/livros" class="<%= pagina === 'livros' ? 'ativo' : '' %>">Livros</a>
+    </nav>
+  </div>
+</header>
+
+<main>
