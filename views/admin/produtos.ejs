@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= titulo %> - Wonderland Coffee</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f1e8;
+      color: #3b2920;
+      margin: 0;
+      padding: 30px;
+    }
+
+    h1 {
+      color: #69442d;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .botao {
+      display: inline-block;
+      background: #76513a;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background: #e8d8c6;
+    }
+
+    .acoes {
+      display: flex;
+      gap: 8px;
+    }
+
+    .excluir {
+      background: #a83f3f;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>Gerenciamento de Produtos ☕</h1>
+
+    <p>Administre os produtos da cafeteria.</p>
+
+    <a class="botao" href="/admin/produtos/novo">
+      + Cadastrar produto
+    </a>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Preço</th>
+          <th>Estoque</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% produtos.forEach(produto => { %>
+          <tr>
+            <td><%= produto.id %></td>
+            <td><%= produto.nome %></td>
+            <td>
+              R$ <%= Number(produto.preco).toFixed(2) %>
+            </td>
+            <td><%= produto.estoque %></td>
+            <td>
+              <div class="acoes">
+                <a class="botao"
+                   href="/admin/produtos/editar/<%= produto.id %>">
+                  Editar
+                </a>
+
+                <form method="POST"
+                      action="/admin/produtos/excluir/<%= produto.id %>">
+                  <button class="botao excluir" type="submit">
+                    Excluir
+                  </button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+    <% if (produtos.length === 0) { %>
+      <p>Nenhum produto cadastrado.</p>
+    <% } %>
+  </main>
+</body>
+</html>
