@@ -28,7 +28,7 @@ async function buscarPorId(id) {
   return livros[0] || null;
 }
 
-// CREATE - Cadastrar um livro
+// CREATE - Cadastrar livro
 async function cadastrar(titulo, autor, isbn, preco, estoque) {
   const [resultado] = await db.execute(
     `INSERT INTO Livraria
@@ -40,7 +40,7 @@ async function cadastrar(titulo, autor, isbn, preco, estoque) {
   return resultado.insertId;
 }
 
-// UPDATE - Atualizar um livro
+// UPDATE - Atualizar livro
 async function atualizar(id, titulo, autor, isbn, preco, estoque) {
   const [resultado] = await db.execute(
     `UPDATE Livraria
@@ -53,7 +53,7 @@ async function atualizar(id, titulo, autor, isbn, preco, estoque) {
   return resultado.affectedRows;
 }
 
-// DELETE - Excluir um livro
+// DELETE - Excluir livro
 async function excluir(id) {
   const [resultado] = await db.execute(
     'DELETE FROM Livraria WHERE id_livro = ?',

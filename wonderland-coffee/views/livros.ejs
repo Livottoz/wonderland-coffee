@@ -1,0 +1,24 @@
+<%- include('partials/header') %>
+
+<section class="container secao">
+  <h1 class="titulo-pagina">Livros</h1>
+  <p class="descricao-pagina">Nossa estante para ler junto com um café.</p>
+
+  <!-- Campo de busca (funciona com o script.js) -->
+  <input type="text" id="busca" class="campo-busca" placeholder="Buscar por título ou autor...">
+
+  <div class="grade" id="listaLivros">
+    <% livros.forEach(function(livro) { %>
+      <div class="caixa livro">
+        <span class="etiqueta"><%= livro.genero %></span>
+        <h3><%= livro.titulo %></h3>
+        <p><%= livro.autor %></p>
+        <p class="preco">R$ <%= livro.preco.toFixed(2).replace('.', ',') %></p>
+      </div>
+    <% }) %>
+  </div>
+
+  <p id="semResultado" class="sem-resultado">Nenhum livro encontrado.</p>
+</section>
+
+<%- include('partials/footer') %>

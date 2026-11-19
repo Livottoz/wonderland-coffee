@@ -1,0 +1,294 @@
+/* ===== CORES ===== */
+:root {
+  --creme: #fefaf4;
+  --verde: #003824;
+  --vermelho: #cf052b;
+  --rosa: #ffbccd;
+  --amarelo: #ffe283;
+  --cinza: #5a6b62;
+  --borda: #d6e0d9;
+}
+
+/* ===== BÁSICO ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--creme);
+  color: var(--verde);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  font-family: 'Fraunces', Georgia, serif;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.secao {
+  padding: 50px 20px;
+}
+
+/* ===== CABEÇALHO ===== */
+.cabecalho {
+  position: relative;
+  background-color: var(--verde);
+  color: var(--creme);
+}
+
+.cabecalho-conteudo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.logo {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 22px;
+}
+
+.menu {
+  display: flex;
+  gap: 24px;
+}
+
+.menu a {
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.menu a:hover,
+.menu a.ativo {
+  border-bottom-color: var(--amarelo);
+}
+
+.botao-menu {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--creme);
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* ===== BOTÕES ===== */
+.botoes {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.botao {
+  display: inline-block;
+  background-color: var(--vermelho);
+  color: white;
+  padding: 12px 22px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.botao:hover {
+  opacity: 0.85;
+}
+
+.botao-claro {
+  background-color: white;
+  color: var(--verde);
+  border: 1px solid var(--verde);
+}
+
+/* ===== BANNER (página inicial) ===== */
+.banner {
+  background-color: var(--rosa);
+  padding: 80px 0;
+}
+
+.banner h1 {
+  color: var(--vermelho);
+  font-size: 52px;
+  margin-bottom: 10px;
+}
+
+.banner p {
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+
+.subtitulo {
+  font-size: 12px !important;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 8px !important;
+}
+
+/* ===== CAIXAS / CARDS ===== */
+.grade {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.caixa {
+  background-color: white;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.caixa h3 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.caixa p {
+  color: var(--cinza);
+}
+
+/* ===== CITAÇÃO ===== */
+.citacao {
+  background-color: var(--amarelo);
+  text-align: center;
+  padding: 50px 0;
+}
+
+.citacao p {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+/* ===== TÍTULO DAS PÁGINAS ===== */
+.titulo-pagina {
+  font-size: 40px;
+  color: var(--vermelho);
+}
+
+.descricao-pagina {
+  color: var(--cinza);
+  margin-bottom: 30px;
+}
+
+/* ===== TABELA DO CARDÁPIO ===== */
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  margin-bottom: 40px;
+}
+
+.tabela th {
+  background-color: var(--verde);
+  color: var(--creme);
+  text-align: left;
+  padding: 12px;
+}
+
+.tabela td {
+  padding: 12px;
+  border-bottom: 1px solid var(--borda);
+}
+
+.preco {
+  color: var(--vermelho);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ===== LIVROS ===== */
+.campo-busca {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+
+.etiqueta {
+  display: inline-block;
+  background-color: var(--rosa);
+  font-size: 12px;
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.livro .preco {
+  margin-top: 10px;
+  color: var(--vermelho);
+}
+
+.sem-resultado {
+  display: none;
+  color: var(--cinza);
+}
+
+/* ===== RODAPÉ ===== */
+.rodape {
+  background-color: var(--verde);
+  color: var(--creme);
+  text-align: center;
+  padding: 24px;
+  font-size: 14px;
+}
+
+/* ===== CELULAR ===== */
+@media (max-width: 700px) {
+  .botao-menu {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background-color: var(--verde);
+  }
+
+  .menu.aberto {
+    display: flex;
+  }
+
+  .menu a {
+    padding: 14px 20px;
+  }
+
+  .banner h1 {
+    font-size: 36px;
+  }
+
+  .grade {
+    grid-template-columns: 1fr;
+  }
+
+  /* esconde a coluna de descrição para caber na tela */
+  .tabela th:nth-child(2),
+  .tabela td:nth-child(2) {
+    display: none;
+  }
+}

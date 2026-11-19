@@ -1,6 +1,7 @@
 
 const livrosModel = require('../models/livrosModel');
 
+// Controller da livraria integrado ao MySQL
 exports.listar = async (req, res) => {
   try {
     const resultado = await livrosModel.listarTodos();

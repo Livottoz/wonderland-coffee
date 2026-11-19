@@ -22,11 +22,14 @@ app.use(express.urlencoded({ extended: true }));
 // Arquivos públicos (CSS, JS e imagens)
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Configuração das sessões
+// Verifica a chave das sessões
 if (!process.env.SESSION_SECRET) {
-  throw new Error('Configure SESSION_SECRET no arquivo .env');
+  throw new Error(
+    'Configure SESSION_SECRET no arquivo .env'
+  );
 }
 
+// Configuração das sessões
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
@@ -39,7 +42,7 @@ app.use(session({
   }
 }));
 
-// Rotas administrativas
+// Rotas administrativas protegidas
 app.use('/admin', adminRoutes);
 
 // Rotas públicas

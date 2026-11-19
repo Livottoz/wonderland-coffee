@@ -24,7 +24,7 @@ async function buscarPorId(id) {
     [id]
   );
 
-  return produtos[0];
+  return produtos[0] || null;
 }
 
 // CREATE - Cadastrar produto

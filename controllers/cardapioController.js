@@ -1,6 +1,7 @@
 
 const cardapioModel = require('../models/cardapioModel');
 
+// Controller do cardápio integrado ao MySQL
 exports.listar = async (req, res) => {
   try {
     const produtos = await cardapioModel.listarTodos();
