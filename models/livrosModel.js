@@ -1,17 +1,72 @@
-// Model dos livros
-// Por enquanto os dados ficam em um array.
 
-const livros = [
-  { id: 1, titulo: 'Alice no País das Maravilhas', autor: 'Lewis Carroll', genero: 'Clássico', preco: 39.9 },
-  { id: 2, titulo: 'Alice Através do Espelho', autor: 'Lewis Carroll', genero: 'Clássico', preco: 42.9 },
-  { id: 3, titulo: 'O Pequeno Príncipe', autor: 'Antoine de Saint-Exupéry', genero: 'Infantojuvenil', preco: 29.9 },
-  { id: 4, titulo: 'Dom Casmurro', autor: 'Machado de Assis', genero: 'Clássico', preco: 24.9 },
-  { id: 5, titulo: 'O Hobbit', autor: 'J. R. R. Tolkien', genero: 'Fantasia', preco: 54.9 },
-  { id: 6, titulo: 'Orgulho e Preconceito', autor: 'Jane Austen', genero: 'Romance', preco: 34.9 }
-];
+const db = require('../db');
 
-function listarTodos() {
+// READ - Listar todos os livros
+async function listarTodos() {
+  const [livros] = await db.query(`
+    SELECT
+      id_livro AS id,
+      titulo,
+      autor,
+      isbn,
+      preco,
+      estoque
+    FROM Livraria
+    ORDER BY titulo
+  `);
+
   return livros;
 }
 
-module.exports = { listarTodos };
+// READ - Buscar livro pelo ID
+async function buscarPorId(id) {
+  const [livros] = await db.execute(
+    'SELECT * FROM Livraria WHERE id_livro = ?',
+    [id]
+  );
+
+  return livros[0] || null;
+}
+
+// CREATE - Cadastrar livro
+async function cadastrar(titulo, autor, isbn, preco, estoque) {
+  const [resultado] = await db.execute(
+    `INSERT INTO Livraria
+     (titulo, autor, isbn, preco, estoque)
+     VALUES (?, ?, ?, ?, ?)`,
+    [titulo, autor, isbn || null, preco, estoque]
+  );
+
+  return resultado.insertId;
+}
+
+// UPDATE - Atualizar livro
+async function atualizar(id, titulo, autor, isbn, preco, estoque) {
+  const [resultado] = await db.execute(
+    `UPDATE Livraria
+     SET titulo = ?, autor = ?, isbn = ?,
+         preco = ?, estoque = ?
+     WHERE id_livro = ?`,
+    [titulo, autor, isbn || null, preco, estoque, id]
+  );
+
+  return resultado.affectedRows;
+}
+
+// DELETE - Excluir livro
+async function excluir(id) {
+  const [resultado] = await db.execute(
+    'DELETE FROM Livraria WHERE id_livro = ?',
+    [id]
+  );
+
+  return resultado.affectedRows;
+}
+
+module.exports = {
+  listarTodos,
+  buscarPorId,
+  cadastrar,
+  atualizar,
+  excluir
+};
