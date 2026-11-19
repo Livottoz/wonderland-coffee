@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= titulo %></title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, serif;
+      background: #f6eee3;
+      color: #443025;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 430px;
+      background: #fffaf4;
+      padding: 42px 36px;
+      border-radius: 18px;
+      box-shadow: 0 12px 35px rgba(65, 40, 24, 0.12);
+      text-align: center;
+    }
+
+    .icone {
+      font-size: 42px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 30px;
+      color: #65432e;
+      margin: 10px 0;
+    }
+
+    .subtitulo {
+      color: #8a7566;
+      font-size: 15px;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    form {
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 20px;
+      border: 1px solid #d6c4b3;
+      border-radius: 8px;
+      background: #fff;
+      font-size: 15px;
+    }
+
+    input:focus {
+      outline: 2px solid #a87e5d;
+      border-color: transparent;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #76513a;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #593a29;
+    }
+
+    .erro {
+      background: #fbe8e5;
+      color: #9c3333;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .links {
+      margin-top: 24px;
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    a {
+      color: #76513a;
+      font-weight: bold;
+    }
+
+    .voltar {
+      display: block;
+      margin-top: 16px;
+      font-weight: normal;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <div class="icone">☕</div>
+
+    <h1>Wonderland Coffee</h1>
+
+    <p class="subtitulo">
+      Bem-vindo de volta ao nosso pequeno País das Maravilhas.
+      Entre para continuar sua experiência.
+    </p>
+
+    <% if (erro) { %>
+      <div class="erro" role="alert">
+        <%= erro %>
+      </div>
+    <% } %>
+
+    <form action="/login" method="POST">
+      <label for="email">E-mail</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        autocomplete="email"
+        maxlength="150"
+        required
+        placeholder="seuemail@exemplo.com"
+      >
+
+      <label for="senha">Senha</label>
+      <input
+        type="password"
+        id="senha"
+        name="senha"
+        autocomplete="current-password"
+        required
+        placeholder="Digite sua senha"
+      >
+
+      <button type="submit">Entrar</button>
+    </form>
+
+    <div class="links">
+      Ainda não possui uma conta?
+      <a href="/cadastro">Cadastre-se</a>
+
+      <a class="voltar" href="/">
+        Voltar para a página inicial
+      </a>
+    </div>
+  </main>
+</body>
+</html>

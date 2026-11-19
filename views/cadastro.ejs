@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= titulo %></title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, serif;
+      background: #f6eee3;
+      color: #443025;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 450px;
+      padding: 40px 36px;
+      background: #fffaf4;
+      border-radius: 18px;
+      box-shadow: 0 12px 35px rgba(65, 40, 24, 0.12);
+    }
+
+    h1 {
+      color: #65432e;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .subtitulo {
+      text-align: center;
+      color: #8a7566;
+      line-height: 1.5;
+      margin-bottom: 28px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 7px;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 19px;
+      border: 1px solid #d6c4b3;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    input:focus {
+      outline: 2px solid #a87e5d;
+      border-color: transparent;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #76513a;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #593a29;
+    }
+
+    .erro {
+      background: #fbe8e5;
+      color: #9c3333;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .links {
+      text-align: center;
+      margin-top: 23px;
+      line-height: 2;
+      font-size: 14px;
+    }
+
+    a {
+      color: #76513a;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <h1>Crie sua conta 📖</h1>
+
+    <p class="subtitulo">
+      Sua próxima história começa aqui.
+      Faça parte do Wonderland Coffee!
+    </p>
+
+    <% if (erro) { %>
+      <div class="erro" role="alert">
+        <%= erro %>
+      </div>
+    <% } %>
+
+    <form action="/cadastro" method="POST">
+      <label for="nome">Nome completo</label>
+      <input
+        type="text"
+        id="nome"
+        name="nome"
+        maxlength="100"
+        autocomplete="name"
+        required
+      >
+
+      <label for="email">E-mail</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        maxlength="150"
+        autocomplete="email"
+        required
+      >
+
+      <label for="senha">Senha</label>
+      <input
+        type="password"
+        id="senha"
+        name="senha"
+        minlength="8"
+        autocomplete="new-password"
+        required
+      >
+
+      <button type="submit">Criar minha conta</button>
+    </form>
+
+    <div class="links">
+      Já possui uma conta?
+      <a href="/login">Faça login</a>
+
+      <div>
+        <a href="/">Voltar para o início</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
