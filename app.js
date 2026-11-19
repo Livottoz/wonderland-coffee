@@ -5,6 +5,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
+const authRoutes = require('./routes/authRoutes');
 
 const adminRoutes = require('./routes/adminRoutes');
 const rotas = require('./routes/rotas');
@@ -41,6 +42,9 @@ app.use(session({
     maxAge: 1000 * 60 * 60 * 2
   }
 }));
+
+// Rotas de autenticação
+app.use('/', authRoutes);
 
 // Rotas administrativas protegidas
 app.use('/admin', adminRoutes);
